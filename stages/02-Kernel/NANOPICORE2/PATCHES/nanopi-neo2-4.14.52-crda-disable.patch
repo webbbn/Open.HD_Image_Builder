@@ -1,7 +1,7 @@
 diff --git a/net/wireless/db.txt b/net/wireless/db.txt
 index a2fc3a0..2c3a976 100644
---- a/net/wireless/db.txt
-+++ b/net/wireless/db.txt
+--- net/wireless/db.txt
++++ net/wireless/db.txt
 @@ -1,17 +1,47 @@
 -#
 -# This file is a placeholder to prevent accidental build breakage if someone
@@ -69,8 +69,8 @@ index a2fc3a0..2c3a976 100644
 +	(4910 - 5835 @ 160), (30)
 diff --git a/net/wireless/reg.c b/net/wireless/reg.c
 index 6e94f69..20e5c10 100644
---- a/net/wireless/reg.c
-+++ b/net/wireless/reg.c
+--- net/wireless/reg.c
++++ net/wireless/reg.c
 @@ -221,35 +221,20 @@ static const struct ieee80211_regdomain world_regdom = {
  	.alpha2 =  "00",
  	.reg_rules = {
