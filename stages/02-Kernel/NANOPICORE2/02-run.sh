@@ -6,6 +6,9 @@ pushd ${STAGE_WORK_DIR}
 log "Compile kernel For NanoPi H5 hardware"
 pushd linux
 
+log "Copy Kernel config"
+cp "${STAGE_DIR}/FILES/nanopi-neo2-4.14.52-wifibroadcast.config" ./.config
+
 touch .scmversion
 make sunxi_arm64_defconfig ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
 make Image dtbs ARCH=arm64 CROSS_COMPILE=aarch64-linux-gnu-
