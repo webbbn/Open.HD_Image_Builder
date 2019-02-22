@@ -11,7 +11,7 @@ if [ ! -d ~/nanopitools ]; then
     tar xf "gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu.tar.xz" -C ~/nanopitools
 
     log "Install the NanoPi Tools"
-    echo PATH=\$PATH:~/nanopitools/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu/bin >> ~/.bashrc
+    echo "PATH=\$PATH:~/nanopitools/gcc-linaro-6.3.1-2017.02-x86_64_aarch64-linux-gnu/bin" >> ~/.bashrc
     source ~/.bashrc
 fi
 
