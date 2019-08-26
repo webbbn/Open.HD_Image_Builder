@@ -21,5 +21,10 @@ pipeline {
         sh 'rm -rf deploy/*'
       }
     }
+    stage('Change Ownership') {
+      steps {
+        sh 'sudo chown -R jenkins.jenkins .'
+      }
+    }
   }
 }
