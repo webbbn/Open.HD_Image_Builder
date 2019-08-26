@@ -8,7 +8,7 @@ pipeline {
     }
     stage('Compress') {
       steps {
-        sh 'gzip deploy/*.img'
+        sh 'sudo gzip deploy/*.img'
       }
     }
     stage('Archive') {
@@ -18,7 +18,7 @@ pipeline {
     }
     stage('Cleanup') {
       steps {
-        sh 'rm -rf deploy/*'
+        sh 'sudo rm -rf deploy/*'
       }
     }
     stage('Change Ownership') {
