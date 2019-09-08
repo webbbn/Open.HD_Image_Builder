@@ -28,8 +28,7 @@ pipeline {
     }
     stage('Upload to Drive') {
       steps {
-        sh '''/var/lib/jenkins/gdrive upload --parent 1bua78EwR-gbat6O2DQO9GMwPWrd3RXoW jobs/Open.HD_Image_B
-uilder/branches/development/builds/lastSuccessfulBuild/archive/deploy/*'''
+        sh '/var/lib/jenkins/gdrive upload --parent 1bua78EwR-gbat6O2DQO9GMwPWrd3RXoW jobs/Open.HD_Image_Builder/branches/development/builds/lastSuccessfulBuild/archive/deploy/*'
       }
     }
   }
