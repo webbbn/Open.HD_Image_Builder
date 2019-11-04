@@ -4,12 +4,6 @@
 
 #!/bin/bash
 
-#Install Raspi2png
-cd /home/pi
-cd raspi2png
-sudo make
-sudo make install
-
 # Install OpenVG
 cd /home/pi
 cd openvg
@@ -17,30 +11,12 @@ sudo make clean
 sudo make library
 sudo make install
 
-# Install OMX
-#cd /home/pi
-#cd gst-omx
-#sudo make clean
-#sudo ./autogen.sh
-#sudo make 
-#sudo make install
-
-# Gets stuck
-# Install mavlink-router
+# Install FLIROne Driver
 cd /home/pi
-cd mavlink-router
-sudo ./autogen.sh && sudo ./configure CFLAGS='-g -O2' \
-        --sysconfdir=/etc --localstatedir=/var --libdir=/usr/lib64 \
-    --prefix=/usr
+cd Open.HD_FlirOneDrv
+cd flir8p1-gpl
 sudo make
-
-# Install cmavnode
-cd /home/pi
-cd cmavnode
-sudo mkdir build && cd build
-sudo cmake ..
-sudo make
-sudo make install
+sudo chmod +x flir8p1
 
 # install wifibroadcast base
 cd /home/pi
@@ -114,15 +90,14 @@ make clean
 make
 mv processUDP ../processUDP
 
-
 #Configure scripts
 chmod 755 -R /home/pi/RemoteSettings
-
-apt-get --yes --force-yes install gstreamer1.0-alsa
+chmod 755 -R /home/pi/raspberrypi
 
 #install cameracontrol
 
 chmod 755 /home/pi/cameracontrol/cameracontrolUDP.py
+chmod 755 /home/pi/cameracontrol/LoadFlirDriver.sh
 pip install psutil
 
 cd /home/pi/cameracontrol/RCParseChSrc
@@ -143,3 +118,17 @@ sudo chmod 775 /home/pi/wifibroadcast-rc-Ath9k/rctxUDP_IN
 
 sudo chmod 775 /home/pi/wifibroadcast-rc/rctxUDP.sh
 sudo chmod 775 /home/pi/wifibroadcast-rc/rctxUDP_IN
+
+cd /home/pi/wifibroadcast-rc-Ath9k
+sudo chmod 775 /home/pi/wifibroadcast-rc-Ath9k/buildlora.sh
+sudo /home/pi/wifibroadcast-rc-Ath9k/buildlora.sh
+sudo chmod 775 /home/pi/wifibroadcast-rc-Ath9k/lora
+
+
+cd /home/pi/wifibroadcast-misc/LCD
+sudo make
+chmod 755 /home/pi/wifibroadcast-misc/LCD/MouseListener
+
+ rm /etc/init.d/dnsmasq
+ rm /etc/init.d/dhcpcd
+
