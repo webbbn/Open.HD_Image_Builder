@@ -1,0 +1,24 @@
+name: master-builder
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+    - name: install-dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install unzip curl git qemu qemu-user-static binfmt-support build-essential gcc-arm*
+    - name: build
+      run: |
+        cd Open.HD_Image_Builder
+        sudo -s ./build.sh
+    - name: upload-artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: IMAGE.img
+        path: Open.HD_Image_Builder/deploy/*.img
