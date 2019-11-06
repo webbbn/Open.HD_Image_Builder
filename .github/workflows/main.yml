@@ -14,11 +14,9 @@ jobs:
         sudo apt-get update
         sudo apt-get install unzip curl git qemu qemu-user-static binfmt-support build-essential gcc-arm*
     - name: build
-      run: |
-        cd Open.HD_Image_Builder
-        sudo -s ./build.sh
+      run: sudo -s ./build.sh
     - name: upload-artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
-        name: IMAGE.img
-        path: Open.HD_Image_Builder/deploy/*.img
+        name: OpenHD.img
+        path: deploy/*.img
