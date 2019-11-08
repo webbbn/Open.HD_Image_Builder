@@ -89,14 +89,14 @@ gpu_mem=128
 force_turbo=1
 
 # Set CPU speed to 900Mhz
-arm_freq=900
+#arm_freq=900
 
 # Set higher voltage for stability
-over_voltage=3
+#over_voltage=3
 
 # overclock CORE/GPU/SDRAM for less latency and higher data troughput
-gpu_freq=400
-sdram_freq=433
+#gpu_freq=400
+#sdram_freq=433
 
 # speed-up booting
 bootcode_delay=0
