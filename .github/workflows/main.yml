@@ -15,6 +15,8 @@ jobs:
         sudo apt-get install unzip curl git qemu qemu-user-static binfmt-support build-essential gcc-arm*
     - name: build
       run: sudo -s ./build.sh
+    - name: compress
+      run: gzip deploy/*.img
     - name: upload-artifacts
       uses: actions/upload-artifact@v1.0.0
       with:
