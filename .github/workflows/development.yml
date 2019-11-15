@@ -1,0 +1,26 @@
+name: development-builder
+
+on: [push]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v1
+      with:
+        ref: development
+    - name: install-dependencies
+      run: |
+        sudo apt-get update
+        sudo apt-get install unzip curl git qemu qemu-user-static binfmt-support build-essential gcc-arm*
+    - name: build
+      run: sudo -s ./build.sh
+    - name: compress
+      run: sudo gzip deploy/*.img
+    - name: upload-artifacts
+      uses: actions/upload-artifact@v1.0.0
+      with:
+        name: OpenHD.img
+        path: deploy
