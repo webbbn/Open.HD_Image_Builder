@@ -11,10 +11,21 @@ pushd GIT
 MNT_DIR="${STAGE_WORK_DIR}/mnt"
 
 log "Download all Open.HD Sources"
-sudo git clone -b master https://github.com/HD-Fpv/Open.HD.git
+sudo git clone -b master ${OPENHD_REPO}
 pushd Open.HD
+git checkout ${OPENHD_BRANCH}
 sudo git submodule update --init
+OPENHD_VERSION=$(git describe --always --tags)
+export OPENHD_VERSION
 popd
+
+# store the commit used for the Open.HD repo as we as the builder inside the image
+# to allow tracing problems and changes back to the source, even if the image is renamed
+echo ${OPENHD_VERSION} > ${MNT_DIR}/openhd_version.txt
+echo ${BUILDER_VERSION} > ${MNT_DIR}/builder_version.txt
+# copy the Open.HD repo version back down to the work folder so build.sh can retrieve it and use it
+# in the name of the image being built
+cp ${MNT_DIR}/openhd_version.txt ${STAGE_WORK_DIR}/../
 
 log "Download OpenVG"
 sudo mv Open.HD/openvg/ openvg/
